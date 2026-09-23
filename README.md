@@ -3,11 +3,11 @@
 A lightweight infrastructure monitoring system that collects system metrics, stores them, and detects anomalies in real time.
 
 ## Current Status
-- [x] Data collection — CPU, RAM, disk every 5 seconds
+- [x] Data collection
 - [x] SQLite storage
-- [ ] REST API (Week 2)
+- [x] REST API (FastAPI with /health and /metrics)
 - [ ] Anomaly detection (Week 3)
-- [ ] Docker + GitHub Actions (Week 4)
+- [ ] Docker + CI (Week 4)
 - [ ] Live deployment (Week 4)
 
 ## Why This Exists
