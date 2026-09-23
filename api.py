@@ -25,10 +25,10 @@ def health():
 
 # Metrics endpoint: return last 50 readings
 @app.get("/metrics")
-def get_metrics():
+def get_metrics(limit: int = 50):
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT timestamp, cpu, memory, disk FROM metrics ORDER BY id DESC LIMIT 50")
+    cursor.execute("SELECT timestamp, cpu, memory, disk FROM metrics ORDER BY id DESC LIMIT ?", (limit,))
     rows = cursor.fetchall()
     conn.close()
 
