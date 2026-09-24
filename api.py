@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import sqlite3
 from pydantic import BaseModel
+from detector import detect_anomalies
 
 # Create FastAPI app instance
 app = FastAPI()
@@ -35,3 +36,27 @@ def get_metrics(limit: int = 50):
     # Convert rows to list of Metric objects
     metrics = [Metric(**dict(row)) for row in rows]
     return metrics
+
+@app.get("/anomalies")
+def get_anomalies(limit: int = 100, threshold: float = 2.0):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT cpu FROM metrics ORDER BY id DESC LIMIT ?",
+        (limit,)
+    )
+    rows = cursor.fetchall()
+    conn.close()
+
+    cpu_values = [row["cpu"] for row in rows]
+    anomalies = detect_anomalies(cpu_values, threshold)
+
+    return {
+        "total_readings_checked": len(cpu_values),
+        "anomalies_found": len(anomalies),
+        "threshold": threshold,
+        "anomalies": [
+            {"index": idx, "value": val, "z_score": round(z, 3)}
+            for idx, val, z in anomalies
+        ]
+    }
