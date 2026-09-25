@@ -1,5 +1,7 @@
 # SmartOps Monitor
 
+![Tests](https://github.com/Yeromyngoi/smartops-monitor/actions/workflows/tests.yml/badge.svg)
+
 A lightweight infrastructure monitoring system that collects system metrics, stores them, and detects anomalies in real time.
 
 ## Current Status
