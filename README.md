@@ -50,7 +50,7 @@ Try it:
 *Note: The demo instance runs on Render's free tier and may spin down after inactivity. The first request may take ~30 seconds to wake it up.*
 
 ## Tech Stack
-- Python 3.14
+- Python 3.12
 - psutil (system metrics)
 - SQLite (storage)
 
