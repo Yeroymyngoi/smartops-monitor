@@ -38,6 +38,17 @@ Try it:
 - `/anomalies?threshold=1.5` — more sensitive
 - `/anomalies?limit=50&threshold=1.0` — very sensitive, last 50 readings
 
+## 🔗 Live Demo
+
+**API Docs:** [https://smartops-monitor.onrender.com/docs](https://smartops-monitor.onrender.com/docs)
+
+**Endpoints:**
+- `/health` — service status
+- `/metrics` — returns recent readings (empty on the demo instance; populated when running locally with the collector)
+- `/anomalies` — returns flagged readings using Z-score detection
+
+*Note: The demo instance runs on Render's free tier and may spin down after inactivity. The first request may take ~30 seconds to wake it up.*
+
 ## Tech Stack
 - Python 3.14
 - psutil (system metrics)
