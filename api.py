@@ -5,7 +5,20 @@ from detector import detect_anomalies
 
 # Create FastAPI app instance
 app = FastAPI()
-
+@app.on_event("startup")
+def startup():
+    conn = sqlite3.connect("metrics.db")
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS metrics (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            timestamp TEXT,
+            cpu REAL,
+            memory REAL,
+            disk REAL
+        )
+    """)
+    conn.commit()
+    conn.close()
 # Define the data model for a metric reading
 class Metric(BaseModel):
     timestamp: str
