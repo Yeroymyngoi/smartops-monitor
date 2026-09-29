@@ -9,8 +9,8 @@ A lightweight infrastructure monitoring system that collects system metrics, sto
 - [x] SQLite storage
 - [x] REST API (FastAPI with /health, /metrics, /anomalies)
 - [x] Z-score anomaly detection with pytest tests
-- [ ] Docker + GitHub Actions 
-- [ ] Live deployment 
+- [x] Docker + GitHub Actions 
+- [x] Live deployment 
 
 ## Why This Exists
 Small teams and independent developers often lack access to affordable monitoring tools. SmartOps Monitor is a self-hosted, lightweight alternative that runs on a single machine and provides the core essentials: metrics history and anomaly alerts.
